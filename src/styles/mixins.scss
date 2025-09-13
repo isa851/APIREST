@@ -1,6 +1,5 @@
 @import './variables';
 
-// Flexbox mixins
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -18,7 +17,6 @@
   flex-direction: column;
 }
 
-// Button mixins
 @mixin button-base {
   display: inline-flex;
   align-items: center;
@@ -69,7 +67,6 @@
   }
 }
 
-// Card mixins
 @mixin card {
   background: $white;
   border-radius: $border-radius-xl;
@@ -83,7 +80,6 @@
   }
 }
 
-// Text mixins
 @mixin text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -97,7 +93,6 @@
   overflow: hidden;
 }
 
-// Animation mixins
 @mixin fade-in($duration: $transition-normal) {
   animation: fadeIn $duration ease-in-out;
 }
@@ -110,7 +105,6 @@
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-// Responsive mixins
 @mixin mobile {
   @media (max-width: #{$breakpoint-sm - 1px}) {
     @content;
@@ -135,7 +129,7 @@
   }
 }
 
-// Keyframes
+
 @keyframes fadeIn {
   from {
     opacity: 0;

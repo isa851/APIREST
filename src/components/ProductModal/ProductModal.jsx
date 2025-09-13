@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { X, ShoppingCart, Star, ChevronLeft, ChevronRight } from 'lucide-react';
-import './ProductModal.scss';
+import React, { useState } from "react";
+import { X, ShoppingCart, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import "./ProductModal.scss";
 
 const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!isOpen || !product) return null;
 
-  const validImages = product.images.filter(img => {
+  const validImages = product.images.filter((img) => {
     try {
-      const cleanUrl = img.replace(/['"]/g, '');
+      const cleanUrl = img.replace(/['"]/g, "");
       new URL(cleanUrl);
       return true;
     } catch {
@@ -17,7 +17,12 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
     }
   });
 
-  const images = validImages.length > 0 ? validImages : ['https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop'];
+  const images =
+    validImages.length > 0
+      ? validImages
+      : [
+          "https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop",
+        ];
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -29,13 +34,13 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
 
   return (
     <>
-      {/* Backdrop */}
       <div className="product-modal__backdrop" onClick={onClose} />
-      
-      {/* Modal */}
+
       <div className="product-modal">
-        <div className="product-modal__container" onClick={(e) => e.stopPropagation()}>
-          {/* Header */}
+        <div
+          className="product-modal__container"
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className="product-modal__header">
             <h2 className="product-modal__title">Детали товара</h2>
             <button onClick={onClose} className="product-modal__close">
@@ -43,9 +48,7 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
             </button>
           </div>
 
-          {/* Content */}
           <div className="product-modal__content">
-            {/* Image Gallery */}
             <div className="product-modal__gallery">
               <div className="product-modal__main-image">
                 <img
@@ -53,7 +56,7 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                   alt={product.title}
                   className="product-modal__image"
                 />
-                
+
                 {images.length > 1 && (
                   <>
                     <button
@@ -71,8 +74,7 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                   </>
                 )}
               </div>
-              
-              {/* Thumbnail Gallery */}
+
               {images.length > 1 && (
                 <div className="product-modal__thumbnails">
                   {images.map((image, index) => (
@@ -80,7 +82,9 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
                       className={`product-modal__thumbnail ${
-                        index === currentImageIndex ? 'product-modal__thumbnail--active' : ''
+                        index === currentImageIndex
+                          ? "product-modal__thumbnail--active"
+                          : ""
                       }`}
                     >
                       <img src={image} alt="" />
@@ -90,39 +94,31 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
               )}
             </div>
 
-            {/* Product Info */}
             <div className="product-modal__info">
-              {/* Category */}
               <div className="product-modal__category">
                 {product.category.name}
               </div>
 
-              {/* Title */}
-              <h1 className="product-modal__product-title">
-                {product.title}
-              </h1>
+              <h1 className="product-modal__product-title">{product.title}</h1>
 
-              {/* Rating */}
               <div className="product-modal__rating">
                 <div className="product-modal__stars">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
                       className={`product-modal__star ${
-                        i < 4 ? 'product-modal__star--filled' : ''
+                        i < 4 ? "product-modal__star--filled" : ""
                       }`}
                     />
                   ))}
                 </div>
-                <span className="product-modal__rating-text">(4.0) • 127 отзывов</span>
+                <span className="product-modal__rating-text">
+                  (4.0) • 127 отзывов
+                </span>
               </div>
 
-              {/* Price */}
-              <div className="product-modal__price">
-                ${product.price}
-              </div>
+              <div className="product-modal__price">${product.price}</div>
 
-              {/* Description */}
               <div className="product-modal__section">
                 <h3 className="product-modal__section-title">Описание</h3>
                 <p className="product-modal__description">
@@ -130,7 +126,6 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                 </p>
               </div>
 
-              {/* Features */}
               <div className="product-modal__section">
                 <h3 className="product-modal__section-title">Особенности</h3>
                 <ul className="product-modal__features">
@@ -141,7 +136,6 @@ const ProductModal = ({ product, isOpen, onClose, onAddToCart }) => {
                 </ul>
               </div>
 
-              {/* Add to Cart Button */}
               <button
                 onClick={() => {
                   onAddToCart(product);

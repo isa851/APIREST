@@ -28,7 +28,7 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
 
   return (
     <div className="product-card">
-      {/* Image Container */}
+
       <div className="product-card__image-container">
         {!imageLoaded && !imageError && (
           <div className="product-card__image-skeleton" />
@@ -41,7 +41,7 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
           className={`product-card__image ${imageLoaded ? 'product-card__image--loaded' : ''}`}
         />
         
-        {/* Quick Actions Overlay */}
+    
         <div className="product-card__overlay">
           <button
             onClick={() => onViewDetails(product)}
@@ -57,13 +57,12 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
           </button>
         </div>
 
-        {/* Category Badge */}
         <div className="product-card__badge">
           {product.category.name}
         </div>
       </div>
 
-      {/* Content */}
+  
       <div className="product-card__content">
         <h3 className="product-card__title">
           {product.title}
@@ -73,7 +72,7 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
           {product.description}
         </p>
 
-        {/* Rating */}
+      
         <div className="product-card__rating">
           <div className="product-card__stars">
             {[...Array(5)].map((_, i) => (
@@ -88,7 +87,6 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
           <span className="product-card__rating-text">(4.0)</span>
         </div>
 
-        {/* Price and Add to Cart */}
         <div className="product-card__footer">
           <div className="product-card__price">
             ${product.price}

@@ -15,12 +15,10 @@ const Cart = ({
 
   return (
     <>
-      {/* Backdrop */}
       <div className="cart__backdrop" onClick={onClose} />
       
-      {/* Cart Panel */}
       <div className="cart">
-        {/* Header */}
+  
         <div className="cart__header">
           <h2 className="cart__title">Корзина покупок</h2>
           <button onClick={onClose} className="cart__close">
@@ -28,7 +26,6 @@ const Cart = ({
           </button>
         </div>
 
-        {/* Cart Items */}
         <div className="cart__content">
           {cartItems.length === 0 ? (
             <div className="cart__empty">
@@ -54,7 +51,7 @@ const Cart = ({
                     </h4>
                     <p className="cart__item-price">${item.product.price}</p>
                     
-                    {/* Quantity Controls */}
+     
                     <div className="cart__item-quantity">
                       <button
                         onClick={() => onUpdateQuantity(item.product.id, item.quantity - 1)}
@@ -71,8 +68,7 @@ const Cart = ({
                       </button>
                     </div>
                   </div>
-                  
-                  {/* Remove Button */}
+   
                   <button
                     onClick={() => onRemoveItem(item.product.id)}
                     className="cart__item-remove"
@@ -81,8 +77,7 @@ const Cart = ({
                   </button>
                 </div>
               ))}
-              
-              {/* Clear Cart Button */}
+
               {cartItems.length > 0 && (
                 <button onClick={onClearCart} className="cart__clear">
                   Очистить корзину
@@ -92,7 +87,7 @@ const Cart = ({
           )}
         </div>
 
-        {/* Footer */}
+   
         {cartItems.length > 0 && (
           <div className="cart__footer">
             <div className="cart__total">

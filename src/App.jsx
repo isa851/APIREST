@@ -32,7 +32,6 @@ function App() {
     setIsCartOpen,
   } = useCart();
 
-  // Load initial data
   useEffect(() => {
     const loadInitialData = async () => {
       setIsLoading(true);
@@ -57,7 +56,6 @@ function App() {
     loadInitialData();
   }, []);
 
-  // Load products by category
   useEffect(() => {
     const loadProducts = async () => {
       setIsLoading(true);
@@ -77,7 +75,6 @@ function App() {
     loadProducts();
   }, [selectedCategory]);
 
-  // Filter products by search term
   const filteredProducts = useMemo(() => {
     if (!searchTerm.trim()) return products;
     
@@ -121,17 +118,15 @@ function App() {
       />
 
       <main className="container" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-        {/* Hero Section */}
         <div className="text-center" style={{ marginBottom: '2rem' }}>
           <h1 style={{ fontSize: '2.5rem', fontWeight: '700', color: '#111827', marginBottom: '0.5rem' }}>
-            Добро пожаловать в <span className="text-gradient">ModernShop</span>
+            Добро пожаловать в <span className="text-gradient">SHOPISKO</span>
           </h1>
           <p style={{ color: '#6b7280', fontSize: '1.125rem', margin: 0 }}>
             Откройте для себя лучшие товары по невероятным ценам
           </p>
         </div>
 
-        {/* Category Filter */}
         <CategoryFilter
           categories={categories}
           selectedCategory={selectedCategory}
@@ -139,7 +134,6 @@ function App() {
           isLoading={isCategoriesLoading}
         />
 
-        {/* Products Grid */}
         <ProductGrid
           products={filteredProducts}
           isLoading={isLoading}
@@ -148,7 +142,6 @@ function App() {
         />
       </main>
 
-      {/* Cart Sidebar */}
       <Cart
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -159,7 +152,6 @@ function App() {
         onClearCart={clearCart}
       />
 
-      {/* Product Modal */}
       <ProductModal
         product={selectedProduct}
         isOpen={isModalOpen}
@@ -167,7 +159,6 @@ function App() {
         onAddToCart={handleAddToCart}
       />
 
-      {/* Toast Notifications */}
       <Toast
         message={toast.message}
         isVisible={toast.isVisible}

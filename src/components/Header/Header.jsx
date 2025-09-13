@@ -7,15 +7,14 @@ const Header = ({ cartItemsCount, onCartClick, searchTerm, onSearchChange }) => 
     <header className="header">
       <div className="header__container">
         <div className="header__content">
-          {/* Logo */}
           <div className="header__logo">
             <div className="header__logo-icon">
               <Store className="header__logo-svg" />
             </div>
-            <span className="header__logo-text">ModernShop</span>
+            <span className="header__logo-text">SHOPISKO</span>
           </div>
 
-          {/* Search Bar */}
+    
           <div className="header__search">
             <div className="header__search-wrapper">
               <div className="header__search-icon">
@@ -31,7 +30,6 @@ const Header = ({ cartItemsCount, onCartClick, searchTerm, onSearchChange }) => 
             </div>
           </div>
 
-          {/* Cart */}
           <button onClick={onCartClick} className="header__cart">
             <div className="header__cart-content">
               <ShoppingCart className="header__cart-icon" />

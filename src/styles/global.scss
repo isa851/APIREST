@@ -23,7 +23,6 @@ body {
   line-height: 1.6;
 }
 
-// Typography
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
@@ -54,7 +53,6 @@ p {
   margin-bottom: $spacing-md;
 }
 
-// Links
 a {
   color: $primary-color;
   text-decoration: none;
@@ -65,18 +63,15 @@ a {
   }
 }
 
-// Buttons
 button {
   font-family: inherit;
 }
 
-// Form elements
 input, textarea, select {
   font-family: inherit;
   font-size: 1rem;
 }
 
-// Utility classes
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -114,7 +109,6 @@ input, textarea, select {
   border: 0;
 }
 
-// Scrollbar styling
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -134,7 +128,6 @@ input, textarea, select {
   }
 }
 
-// Loading animations
 .loading-skeleton {
   @include pulse;
   background: linear-gradient(90deg, $gray-200 25%, $gray-100 50%, $gray-200 75%);
