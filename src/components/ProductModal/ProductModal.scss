@@ -1,0 +1,257 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  overflow-y: auto;
+  @include flex-center;
+  padding: $spacing-md;
+
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba($gray-900, 0.5);
+    z-index: $z-modal-backdrop;
+    transition: opacity $transition-normal;
+  }
+
+  &__container {
+    background: $white;
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-xl;
+    width: 100%;
+    max-width: 64rem;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all $transition-normal;
+  }
+
+  &__header {
+    @include flex-between;
+    padding: $spacing-lg;
+    border-bottom: 1px solid $gray-200;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $gray-900;
+    margin: 0;
+  }
+
+  &__close {
+    padding: $spacing-sm;
+    background: $gray-100;
+    border: none;
+    border-radius: $border-radius-lg;
+    cursor: pointer;
+    transition: all $transition-normal;
+
+    &:hover {
+      background: $gray-200;
+    }
+
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+    padding: $spacing-lg;
+    overflow-y: auto;
+    max-height: calc(90vh - 140px);
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__main-image {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    background: $gray-100;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba($gray-900, 0.5);
+    color: $white;
+    padding: $spacing-sm;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: all $transition-normal;
+
+    &:hover {
+      background: rgba($gray-900, 0.7);
+    }
+
+    &--prev {
+      left: $spacing-sm;
+    }
+
+    &--next {
+      right: $spacing-sm;
+    }
+
+    svg {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+
+  &__main-image:hover &__nav {
+    opacity: 1;
+  }
+
+  &__thumbnails {
+    display: flex;
+    gap: $spacing-sm;
+    overflow-x: auto;
+  }
+
+  &__thumbnail {
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    border: 2px solid $gray-200;
+    cursor: pointer;
+    transition: all $transition-normal;
+
+    &:hover {
+      border-color: $gray-300;
+    }
+
+    &--active {
+      border-color: $primary-color;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__category {
+    display: inline-block;
+    background: rgba($primary-color, 0.1);
+    color: $primary-color;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $border-radius-md;
+    width: fit-content;
+  }
+
+  &__product-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: $gray-900;
+    margin: 0;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__stars {
+    display: flex;
+    align-items: center;
+  }
+
+  &__star {
+    height: 1.25rem;
+    width: 1.25rem;
+    color: $gray-300;
+
+    &--filled {
+      color: $accent-color;
+      fill: currentColor;
+    }
+  }
+
+  &__rating-text {
+    color: $gray-600;
+  }
+
+  &__price {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: $primary-color;
+  }
+
+  &__section {
+    &-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: $gray-900;
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  &__description {
+    color: $gray-700;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__features {
+    color: $gray-700;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  &__add-to-cart {
+    @include button-primary;
+    width: 100%;
+    padding: $spacing-md;
+    font-weight: 600;
+    gap: $spacing-sm;
+
+    svg {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+  }
+}

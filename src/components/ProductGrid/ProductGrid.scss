@@ -1,0 +1,91 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-lg;
+
+  @include mobile {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: $spacing-md;
+  }
+
+  &__skeleton {
+    @include card;
+    overflow: hidden;
+
+    &-image {
+      height: 12rem;
+      background: $gray-200;
+      @include pulse;
+    }
+
+    &-content {
+      padding: $spacing-md;
+    }
+
+    &-line {
+      height: 1rem;
+      background: $gray-200;
+      border-radius: $border-radius-sm;
+      margin-bottom: $spacing-sm;
+      @include pulse;
+
+      &--title {
+        height: 1rem;
+        margin-bottom: $spacing-sm;
+      }
+
+      &--description {
+        height: 0.75rem;
+        width: 75%;
+        margin-bottom: $spacing-sm;
+      }
+
+      &--small {
+        height: 0.75rem;
+        width: 50%;
+        margin-bottom: $spacing-md;
+      }
+
+      &--price {
+        height: 1.5rem;
+        width: 4rem;
+      }
+
+      &--button {
+        height: 2rem;
+        width: 5rem;
+      }
+    }
+
+    &-footer {
+      @include flex-between;
+      align-items: center;
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: $spacing-3xl 0;
+
+    &-icon {
+      font-size: 4rem;
+      margin-bottom: $spacing-md;
+    }
+
+    &-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: $gray-900;
+      margin-bottom: $spacing-sm;
+    }
+
+    &-description {
+      color: $gray-600;
+      margin: 0;
+    }
+  }
+}
